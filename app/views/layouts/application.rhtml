@@ -5,8 +5,6 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title><%= @title %></title>
 		<%= stylesheet_link_tag 'style'%>
-		<%= javascript_include_tag 'sifr' %>
-		<%= javascript_include_tag 'application' %>
 		<%= javascript_include_tag 'thirst' %>
 		
 		<% if @page_javascript %>
@@ -15,20 +13,39 @@
   </head>
   <body>
     <div id="content">
-			<%= link_to image_tag('thirst.png', :id => 'logo'), '/' %>
+			<div id="header">
+				<%= link_to image_tag('thirst.png', :id => 'logo'), '/' %>
 
-			<ul id="header">
-					<li><%= link_to "Home", page_url(:action => 'show', :title => 'home') %></li>
-					<li><%= link_to "Wines", page_url(:action => 'show', :title => 'wines') %></li>
-					<li><%= link_to "About", page_url(:action => 'show', :title => 'about') %></li>
-					<li><%= link_to "Links", page_url(:action => 'show', :title => 'links') %></li>
-					<li><%= link_to "Portfolio", asset_url(:action => 'show', :title => 'portfolio') %></li>
-					<li><%= link_to "Offerings", asset_url(:action => 'show', :title => 'offerings') %></li>
-					<% if logged_in? %>
-					<li><%= link_to 'Logout', account_url(:action => 'logout') %></li>
-					<% end %>
-			</ul>
-			
+				<ul id="navigation">
+						<li><%= link_to image_tag('home.png'),
+						 								page_url(:action => 'show', 
+																		 :title => 'home'),
+														:class => 'nav1'  %></li>
+						<li><%= link_to image_tag("wines.png"),
+						 								page_url(:action => 'show', 
+																		 :title => 'wines') %></li>
+						<li><%= link_to image_tag('about.png'), 
+					                  page_url(:action => 'show', 
+					                           :title => 'about'), 
+					                  :class => 'nav2' %></li>
+						<li><%= link_to image_tag('links.png'),
+						 								page_url(:action => 'show', 
+																		 :title => 'links'),
+													  :class => 'nav2' %></li>
+						<li><%= link_to image_tag('portfolio.png'),
+						                asset_url(:action => 'show',
+						                				  :title => 'portfolio'),
+						                :class => 'nav2' %></li>
+						<li><%= link_to image_tag('offerings.png'),
+														asset_url(:action => 'show',
+																			:title => 'offerings') %></li>
+						<% if logged_in? %>
+						<li><%= link_to image_tag('logout.png'),
+														account_url(:action => 'logout'),
+																				:id => 'logout' %></li>
+						<% end %>
+				</ul>
+			</div>
 			<div id="inner_content">
 				<p style="color: green"><%= flash[:notice] %></p>
 				<%= @content_for_layout %>

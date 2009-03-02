@@ -19,6 +19,9 @@
 
 	<p><%= image_submit_tag 'log_in.png', :tabindex => 3 %></p>
 	<% end -%>
+	<br/>
+	<p><%= link_to "Forgot your password?", account_url('forgot_password')%></p>
 </div>
+
 
 <%= link_to image_tag('register', :class => 'login_image'), :action => 'signup' %>

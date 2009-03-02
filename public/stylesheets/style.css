@@ -1,3 +1,7 @@
+* {
+	margin: 0;
+}
+
 /* These are standard sIFR styles... do not modify */
 
 .sIFR-flash {
@@ -30,18 +34,6 @@ span.sIFR-alternate {
 	visibility: hidden;
 }
 
-/*.sIFR-hasFlash h2 {
-  visibility: hidden;
-  letter-spacing: -9px;
-  font-size: 55px;
-}*/
-
-/*.sIFR-hasFlash h3 {
-  visibility: hidden;
-  letter-spacing: -6px;
-  font-size: 25px;
-}*/
-
 .sIFR-hasFlash h4 {
 	visibility: hidden;
 	letter-spacing: -5px;
@@ -72,33 +64,18 @@ span.sIFR-alternate {
   color: #ff0000;
 }
 
-body {
+html, body {
   background: #000000;
-  margin: 0pt;
+  height: 100%;
 }
 
 h1, p {
   color:#969696;
 }
 
-#logo {
-  position: absolute;
-  top: 22px;
-  left: 27px;
-}
-
 #content {
-  position: relative;
-  margin: 0px auto 20px auto;
-  width: 701px;
-}
-
-#inner_content {
-  position: relative;
-  width: 700px;
-  margin: auto;
-  top: 206px;
-  color: #969696;
+  width: 760px;
+	margin: 0 auto;
 }
 
 h2 {
@@ -107,58 +84,59 @@ h2 {
 }
 
 #header {
-  position: absolute;
-  top: 80px;
-  left: 215px;
+  border: 1px solid #000;
+  clear: both;
+}
+
+#header #logo {
+  margin-top: 22px;
+  margin-left: 27px;
+  float:left;
+}
+
+#header #navigation {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 80px 0px 0px 215px;
   border-left: 1px solid #969696;
   border-right: 1px solid #969696;
 }
 
-#header li {
+#header #navigation li {
   float: left;
   padding: 0px;
   margin: 0 0.15em;
 }
 
-#header li a {
+#header #navigation li a {
   position:relative;
-  display:block;
+  display: block;
   height: 24px;
-  margin-left: -2px;
-  margin-right: -2px;
-  padding-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-left: 1px solid #969696;
-  border-right: 1px solid #969696;
+  margin: 0px -2px 0px -2px;
+  padding: 5px 5px 0px 5px;
+/*  border-left: 1px solid #969696;*/
+/*  border-right: 1px solid #969696;*/
+}
+
+.nav1 {
+  top: -1px;
+}
+
+.nav2 {
+  top: -2px;
+}
+
+#logout {
+  top: -12px;
+}
+
+#inner_content {
+  clear: both;
+  margin-top: 126px;
+  color: #969696;
 }
 
 /* iWeb Styles */
-.body {
-    color: #ffffff;
-    font-family: 'ArialMT', 'Arial', 'sans-serif';
-    font-size: 15px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: normal;
-    letter-spacing: 0;
-    line-height: 20px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 0px;
-    opacity: 1.00;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    text-align: left;
-    text-decoration: none;
-    text-indent: 0px;
-    text-transform: none;
-}
-
 .graphic_generic_title_textbox_style_default {
     background: transparent;
     float: none;
@@ -196,10 +174,6 @@ ol {
 
 .Bullet {    border: none;
     text-decoration: none;
-}
-
-div {
-    overflow: visible;
 }
 
 img {
