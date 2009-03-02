@@ -1,6 +1,6 @@
 <h1>Editing asset</h1>
 
-<% form_tag({:action => 'update', :id => @asset}, :multipart => true) do %>
+<% form_tag(asset_url(:action => 'update', :title => @asset.name), :multipart => true) do %>
   <%= render :partial => 'form' %>
   <%= submit_tag 'Edit' %>
 <% end %>

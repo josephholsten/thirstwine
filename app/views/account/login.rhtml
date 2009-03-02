@@ -1,4 +1,5 @@
-<% form_tag do%>
+<% @title = 'login' %>
+<% form_tag do %>
 	<%= hidden_field_tag 'anonymous', true %>
 	<%= image_submit_tag 'view_portfolio_unauthorized.png', :class => 'login_image'%>
 <% end -%>

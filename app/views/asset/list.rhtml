@@ -8,9 +8,9 @@
 <% for asset in @assets %>
   <tr>
     <td><%=h asset.name %></td>
-    <td><%= link_to 'Show', :action => 'show', :id => asset %></td>
-    <td><%= link_to 'Edit', :action => 'edit', :id => asset %></td>
-    <td><%= link_to 'Destroy', { :action => 'destroy', :id => asset }, :confirm => 'Are you sure?', :method => :post %></td>
+    <td><%= link_to 'Show', asset_url(:action => 'show', :title => asset.name) %></td>
+    <td><%= link_to 'Edit', asset_url(:action => 'edit', :title => asset.name) %></td>
+    <td><%= link_to 'Destroy', asset_url(:action => 'destroy', :title => asset.name), :confirm => 'Are you sure?', :method => :post %></td>
   </tr>
 <% end %>
 </table>

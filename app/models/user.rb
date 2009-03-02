@@ -22,13 +22,24 @@ class User < ActiveRecord::Base
     u && u.authenticated?(password) ? u : nil
   end
   
-  def self.authenticate_as_anonymous
+  def self.anonymous
     u = find_by_email("anonymous")
     unless u
-      u = User.create(:email => "anonymous", :password => "asdf", :password_confirmation => "asdf")
+      anon = {
+        :email => "anonymous",
+        :able_license => '123456',
+        :password => "asdf",
+        :password_confirmation => "asdf"
+        }
+      u = User.create(anon)
     end
     u
   end
+  
+  def anonymous?
+    self.email == "anonymous"
+  end
+    
   
   # Encrypts some data with the salt.
   def self.encrypt(password, salt)

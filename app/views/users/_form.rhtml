@@ -1,0 +1,24 @@
+<%= error_messages_for 'user' %>
+
+<!--[form:user]-->
+<p><label for="user_name">Name</label><br/>
+<%= text_field 'user', 'name'  %></p>
+
+<p><label for="user_email">Email</label><br/>
+<%= text_field 'user', 'email'  %></p>
+
+<p><label for="user_able_license">Able license</label><br/>
+<%= text_field 'user', 'able_license'  %></p>
+
+<p><label for="user_company">Company</label><br/>
+<%= text_field 'user', 'company'  %></p>
+
+<p><label for="password">Password</label><br/>
+<%= password_field 'user', 'password' %></p>
+
+<p><label for="password_confirmation">Repeat Password</label><br/>
+<%= password_field 'user', 'password_confirmation' %></p>
+
+<p><label for="user_admin">Admin</label><br/>
+<%= select 'user', 'admin', ['false', 'true'] %></p>
+<!--[eoform:user]-->

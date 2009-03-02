@@ -9,9 +9,19 @@
 </head>
 <body>
 
-<p style="color: green"><%= flash[:notice] %></p>
+<ul id="header">
+	<li>Admin Controls:</li>
+	<li><%= link_to "Assets", :controller => 'asset' -%></li>
+	<li><%= link_to "Pages", :controller => 'pages' -%></li>
+	<li><%= link_to "Users", :controller => 'users' -%></li>
+	<li><%= link_to 'Logout', account_url(:action => 'logout') %></li>
+</ul>
 
-<%= yield  %>
+<div id="inner-content">
+	<p style="color: green"><%= flash[:notice] %></p>
+
+	<%= yield  %>
+</div>
 
 </body>
 </html>

@@ -7,7 +7,7 @@ class AccountController < ApplicationController
   def login
     return unless request.post?
     if params[:anonymous]
-      self.current_user = User.authenticate_as_anonymous
+      self.current_user = User.anonymous
     else
       self.current_user = User.authenticate(params[:email], params[:password])
     end
@@ -17,8 +17,13 @@ class AccountController < ApplicationController
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-      redirect_back_or_default(:controller => '/portfolio', :action => 'index')
+      
       flash[:notice] = "Logged in successfully"
+      if admin?
+        redirect_to :controller => 'asset'
+      else
+        redirect_back_or_default(:controller => '/portfolio', :action => 'index')
+      end
     end
   end
 

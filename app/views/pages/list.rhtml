@@ -1,0 +1,23 @@
+<h1>Listing pages</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  
+<% for page in @pages %>
+  <tr>
+    <td><%=h page.name %></td>
+    <td><%= link_to 'Show', page_url(:action => 'show', :title => page.name) %></td>
+    <td><%= link_to 'Edit', page_url(:action => 'edit', :title => page.name) %></td>
+    <td><%= link_to 'Destroy', page_url(:action => 'destroy', :title => page.name ), :confirm => 'Are you sure?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @page_pages.current.previous } if @page_pages.current.previous %>
+<%= link_to 'Next page', { :page => @page_pages.current.next } if @page_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New page', :action => 'new' %>

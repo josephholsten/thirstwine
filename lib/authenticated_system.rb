@@ -6,6 +6,14 @@ module AuthenticatedSystem
       current_user != :false
     end
     
+    def admin?
+      logged_in? && current_user.admin?
+    end
+
+    def anonymous?
+      logged_in? && current_user.anonymous?
+    end
+    
     # Accesses the current user from the session.
     def current_user
       @current_user ||= (session[:user] && User.find_by_id(session[:user])) || :false
@@ -52,6 +60,13 @@ module AuthenticatedSystem
       self.current_user ||= User.authenticate(username, passwd) || :false if username && passwd
       logged_in? && authorized? ? true : access_denied
     end
+    
+    def admin_required
+      username, passwd = get_auth_data
+      self.current_user ||= User.authenticate(username, passwd) || :false if username && passwd
+      logged_in? && authorized? && admin? ? true : access_denied
+    end
+      
     
     # Redirect as appropriate when an access request fails.
     #
@@ -107,10 +122,6 @@ module AuthenticatedSystem
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
         flash[:notice] = "Logged in successfully"
       end
-    end
-    
-    def anonymous?
-      current_user.email == "anonymous"
     end
 
   private

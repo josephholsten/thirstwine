@@ -1,4 +1,8 @@
 class AssetController < ApplicationController
+  before_filter :login_required, :only => "show"
+  before_filter :admin_required, :except => "show"
+  layout 'admin'
+  
   def index
     list
     render :action => 'list'
@@ -13,8 +17,21 @@ class AssetController < ApplicationController
   end
 
   def show
-    @asset = Asset.find(params[:id])
-    send_data @asset.body, :type => @asset.content_type
+    document_name = params[:title]
+    if anonymous?
+      if document_name == 'portfolio'
+        document_name = 'anonymous portfolio'
+      else
+        document_name = nil
+      end
+    end
+    
+    @document = Asset.find_by_name document_name
+    if @document
+      send_data @document.body, :type => @document.content_type, :display => "inline"
+    else
+      redirect_to home_url
+    end
   end
 
   def new
@@ -34,11 +51,11 @@ class AssetController < ApplicationController
   end
 
   def edit
-    @asset = Asset.find(params[:id])
+    @asset = Asset.find_by_name params[:title]
   end
 
   def update
-    @asset = Asset.find(params[:id])
+    @asset = Asset.find_by_name params[:title]
     if @asset.update_attributes(params[:asset])
       flash[:notice] = 'Asset was successfully updated.'
       redirect_to :action => 'show', :id => @asset
@@ -48,7 +65,7 @@ class AssetController < ApplicationController
   end
 
   def destroy
-    Asset.find(params[:id]).destroy
+    Asset.find_by_name(params[:title]).destroy
     redirect_to :action => 'list'
   end
 end

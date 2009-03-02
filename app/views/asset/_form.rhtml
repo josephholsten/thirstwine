@@ -2,8 +2,9 @@
 
 <!--[form:asset]-->
 <p><label for="asset_name">Name</label><br/>
-	<!-- <%= text_field 'asset', 'name' %>    -->
-	<%= select_tag 'asset[name]', ' <option>portfolio</option><option>anonymous portfolio</option><option>offerings</option>' %>                                                                                                                                                       </p>
+<%= select 'asset', 'name',
+           ['portfolio', 'anonymous portfolio', 'offerings'],
+           :selected => @asset.name %>                                                                                                                                                       </p>
                                                                                                                      
 
 

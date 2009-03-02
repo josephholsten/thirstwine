@@ -1,0 +1,9 @@
+<h1>Editing page</h1>
+
+<% form_tag page_url(:action => 'update', :title => @page.name) do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Edit' %>
+<% end %>
+
+<%= link_to 'Show', page_url(:action => 'show', :title => @page.name) %> |
+<%= link_to 'Back', :action => 'list' %>
