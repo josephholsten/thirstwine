@@ -10,8 +10,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password,                   :if => :password_required?
   validates_length_of       :email,    :within => 3..100
   validates_uniqueness_of   :email, :case_sensitive => false
-  validates_numericality_of :able_license
-  validates_length_of       :able_license, :is => 6
+  validates_format_of       :able_license, :with => /^[+-]?\d{6}$/
   
   # validates_numericality_of :able_license
   before_save :encrypt_password
@@ -106,5 +105,5 @@ class User < ActiveRecord::Base
   
   def password_required?
     crypted_password.blank? || !password.blank?
-  end
+  end  
 end

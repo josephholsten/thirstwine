@@ -7,17 +7,17 @@
 <div id="login_form">
 	<% form_tag do -%>
 	<p><label for="email"><%= image_tag "email.png" %></label><br/>
-	<%= text_field_tag 'email' %></p>
+	<%= text_field_tag 'email', nil, :tabindex => 1 %></p>
 
 	<p><label for="password"><%= image_tag "password.png" %></label><br/>
-	<%= password_field_tag 'password' %></p>
+	<%= password_field_tag 'password', nil, :tabindex => 2 %></p>
 
 	<!-- Uncomment this if you want this functionality
 	<p><label for="remember_me">Remember me:</label>
 	<%= check_box_tag 'remember_me' %></p>
 	-->
 
-	<p><%= image_submit_tag 'log_in.png' %></p>
+	<p><%= image_submit_tag 'log_in.png', :tabindex => 3 %></p>
 	<% end -%>
 </div>
 
