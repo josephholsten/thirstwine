@@ -228,6 +228,21 @@ function adjustLineHeightIfTooBig(idOfElement)
     }
 }
 
+var windowsInternetExplorer = false;
+var browserVersion = 0;
+function detectBrowser()
+{
+    windowsInternetExplorer = false;
+    var appVersion = navigator.appVersion;
+    if ((appVersion.indexOf("MSIE") != -1) &&
+        (appVersion.indexOf("Macintosh") == -1))
+    {
+        var temp = appVersion.split("MSIE");
+        browserVersion = parseFloat(temp[1]);
+        windowsInternetExplorer = true;
+    }
+}
+
 var smallTransparentGif = "";
 function fixupIEPNG(strImageID, transparentGif) 
 {
@@ -242,81 +257,6 @@ function fixupIEPNG(strImageID, transparentGif)
             img.src = transparentGif;
             img.attachEvent("onpropertychange", imgPropertyChanged);
         }
-    }
-}
-
-function getChildOfType(oParent, sNodeName, requestedIndex)
-{
-    var childrenOfType = oParent.getElementsByTagName(sNodeName);
-    return (requestedIndex < childrenOfType.length) ?
-           childrenOfType.item(requestedIndex) : null;
-}
-
-
-function getParaDescendants(oAncestor)
-{
-    var oParaDescendants = new Array();
-    var oPotentialParagraphs = oAncestor.getElementsByTagName('DIV');
-    for (var iIndex=0; iIndex<oPotentialParagraphs.length; iIndex++)
-    {
-        var oNode = oPotentialParagraphs.item(iIndex);
-        if (oNode.className.lastIndexOf('paragraph') != -1)
-        {
-            oParaDescendants.push(oNode);
-        }
-    }
-    return oParaDescendants;
-}
-
-function IMpreload(path, name, areaIndex)
-{
-    var rolloverName = name+'_rollover_'+areaIndex;
-    var rolloverPath = path+'/'+rolloverName+'.png';
-    self[rolloverName] = new Image();
-    self[rolloverName].src = rolloverPath;
-
-    var linkName = name+'_link_'+areaIndex;
-    var linkPath = path+'/'+linkName+'.png';
-    self[linkName] = new Image();
-    self[linkName].src = linkPath;
-    return true;
-}
-
-function IMmouseover(name, areaIndex)
-{
-    var rolloverName = name+'_rollover_'+areaIndex;
-    var linkName = name+'_link_'+areaIndex;
-    var img  = document.getElementById(linkName);
-    if (img)
-    {
-        img.src = self[rolloverName].src;
-    }
-    return true;
-}
-
-function IMmouseout(name, areaIndex)
-{
-    var linkName = name+'_link_'+areaIndex;
-    var img  = document.getElementById(linkName);
-    if (img)
-    {
-        img.src = self[linkName].src;
-    }
-    return true;
-}
-
-var windowsInternetExplorer = false;
-var browserVersion = 0;
-function detectBrowser()
-{
-    windowsInternetExplorer = false;
-    var appVersion = navigator.appVersion;
-    if ((appVersion.indexOf("MSIE") != -1) &&
-        (appVersion.indexOf("Macintosh") == -1))
-    {
-        var temp = appVersion.split("MSIE");
-        browserVersion = parseFloat(temp[1]);
-        windowsInternetExplorer = true;
     }
 }
 
@@ -335,3 +275,47 @@ function imgPropertyChanged()
         inImgPropertyChanged = false;
     }
 }
+
+function getChildOfType(oParent, sNodeName, requestedIndex)
+{
+    var childrenOfType = oParent.getElementsByTagName(sNodeName);
+    return (requestedIndex < childrenOfType.length) ?
+           childrenOfType.item(requestedIndex) : null;
+}
+
+function getParaDescendants(oAncestor)
+{
+    var oParaDescendants = new Array();
+    var oPotentialParagraphs = oAncestor.getElementsByTagName('DIV');
+    for (var iIndex=0; iIndex<oPotentialParagraphs.length; iIndex++)
+    {
+        var oNode = oPotentialParagraphs.item(iIndex);
+        if (oNode.className.lastIndexOf('paragraph') != -1)
+        {
+            oParaDescendants.push(oNode);
+        }
+    }
+    return oParaDescendants;
+}
+
+function onPageLoad()
+{
+    detectBrowser();
+    adjustLineHeightIfTooBig("id1");
+    adjustFontSizeIfTooBig("id1");
+    adjustLineHeightIfTooBig("id2");
+    adjustFontSizeIfTooBig("id2");
+    adjustLineHeightIfTooBig("id11");
+    adjustFontSizeIfTooBig("id11");
+    fixupIEPNG("id3", "links_files/transparent.gif");
+    fixupIEPNG("id4", "links_files/transparent.gif");
+    fixupIEPNG("id5", "links_files/transparent.gif");
+    fixupIEPNG("id6", "links_files/transparent.gif");
+    fixupIEPNG("id7", "links_files/transparent.gif");
+    fixupIEPNG("id8", "links_files/transparent.gif");
+    fixupIEPNG("id9", "links_files/transparent.gif");
+    fixupIEPNG("id10", "links_files/transparent.gif");
+    fixupIEPNG("id12", "links_files/transparent.gif");
+    return true;
+}
+

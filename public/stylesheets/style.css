@@ -30,17 +30,17 @@ span.sIFR-alternate {
 	visibility: hidden;
 }
 
-.sIFR-hasFlash h2 {
-	visibility: hidden;
-	letter-spacing: -9px;
-	font-size: 55px;
-}
+/*.sIFR-hasFlash h2 {
+  visibility: hidden;
+  letter-spacing: -9px;
+  font-size: 55px;
+}*/
 
-.sIFR-hasFlash h3 {
-	visibility: hidden;
-	letter-spacing: -6px;
-	font-size: 25px;
-}
+/*.sIFR-hasFlash h3 {
+  visibility: hidden;
+  letter-spacing: -6px;
+  font-size: 25px;
+}*/
 
 .sIFR-hasFlash h4 {
 	visibility: hidden;
@@ -103,6 +103,7 @@ h1, p {
 
 h2 {
   text-align:center;
+  font-weight: normal;
 }
 
 #header {

@@ -7,6 +7,11 @@
 		<%= stylesheet_link_tag 'style'%>
 		<%= javascript_include_tag 'sifr' %>
 		<%= javascript_include_tag 'application' %>
+		<%= javascript_include_tag 'thirst' %>
+		
+		<% if @page_javascript %>
+			<%= javascript_include_tag @page_javascript %>
+		<% end %>
   </head>
   <body>
     <div id="content">

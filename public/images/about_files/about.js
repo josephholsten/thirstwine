@@ -245,66 +245,6 @@ function fixupIEPNG(strImageID, transparentGif)
     }
 }
 
-function getChildOfType(oParent, sNodeName, requestedIndex)
-{
-    var childrenOfType = oParent.getElementsByTagName(sNodeName);
-    return (requestedIndex < childrenOfType.length) ?
-           childrenOfType.item(requestedIndex) : null;
-}
-
-
-function getParaDescendants(oAncestor)
-{
-    var oParaDescendants = new Array();
-    var oPotentialParagraphs = oAncestor.getElementsByTagName('DIV');
-    for (var iIndex=0; iIndex<oPotentialParagraphs.length; iIndex++)
-    {
-        var oNode = oPotentialParagraphs.item(iIndex);
-        if (oNode.className.lastIndexOf('paragraph') != -1)
-        {
-            oParaDescendants.push(oNode);
-        }
-    }
-    return oParaDescendants;
-}
-
-function IMpreload(path, name, areaIndex)
-{
-    var rolloverName = name+'_rollover_'+areaIndex;
-    var rolloverPath = path+'/'+rolloverName+'.png';
-    self[rolloverName] = new Image();
-    self[rolloverName].src = rolloverPath;
-
-    var linkName = name+'_link_'+areaIndex;
-    var linkPath = path+'/'+linkName+'.png';
-    self[linkName] = new Image();
-    self[linkName].src = linkPath;
-    return true;
-}
-
-function IMmouseover(name, areaIndex)
-{
-    var rolloverName = name+'_rollover_'+areaIndex;
-    var linkName = name+'_link_'+areaIndex;
-    var img  = document.getElementById(linkName);
-    if (img)
-    {
-        img.src = self[rolloverName].src;
-    }
-    return true;
-}
-
-function IMmouseout(name, areaIndex)
-{
-    var linkName = name+'_link_'+areaIndex;
-    var img  = document.getElementById(linkName);
-    if (img)
-    {
-        img.src = self[linkName].src;
-    }
-    return true;
-}
-
 var windowsInternetExplorer = false;
 var browserVersion = 0;
 function detectBrowser()
@@ -335,3 +275,43 @@ function imgPropertyChanged()
         inImgPropertyChanged = false;
     }
 }
+
+function getChildOfType(oParent, sNodeName, requestedIndex)
+{
+    var childrenOfType = oParent.getElementsByTagName(sNodeName);
+    return (requestedIndex < childrenOfType.length) ?
+           childrenOfType.item(requestedIndex) : null;
+}
+
+function getParaDescendants(oAncestor)
+{
+    var oParaDescendants = new Array();
+    var oPotentialParagraphs = oAncestor.getElementsByTagName('DIV');
+    for (var iIndex=0; iIndex<oPotentialParagraphs.length; iIndex++)
+    {
+        var oNode = oPotentialParagraphs.item(iIndex);
+        if (oNode.className.lastIndexOf('paragraph') != -1)
+        {
+            oParaDescendants.push(oNode);
+        }
+    }
+    return oParaDescendants;
+}
+
+function onPageLoad()
+{
+    detectBrowser();
+    adjustLineHeightIfTooBig("id10");
+    adjustFontSizeIfTooBig("id10");
+    fixupIEPNG("id1", "about_files/transparent.gif");
+    fixupIEPNG("id2", "about_files/transparent.gif");
+    fixupIEPNG("id3", "about_files/transparent.gif");
+    fixupIEPNG("id4", "about_files/transparent.gif");
+    fixupIEPNG("id5", "about_files/transparent.gif");
+    fixupIEPNG("id6", "about_files/transparent.gif");
+    fixupIEPNG("id7", "about_files/transparent.gif");
+    fixupIEPNG("id8", "about_files/transparent.gif");
+    fixupIEPNG("id9", "about_files/transparent.gif");
+    return true;
+}
+
