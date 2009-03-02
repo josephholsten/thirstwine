@@ -20,34 +20,34 @@
 						<li><%= link_to image_tag('home.png'),
 						 								page_url(:action => 'show', 
 																		 :title => 'home'),
-														:class => 'nav1'  %></li>
+														:id => 'home'  %></li>
 						<li><%= link_to image_tag("wines.png"),
 						 								page_url(:action => 'show', 
 																		 :title => 'wines') %></li>
 						<li><%= link_to image_tag('about.png'), 
 					                  page_url(:action => 'show', 
 					                           :title => 'about'), 
-					                  :class => 'nav2' %></li>
+					                  :id => 'about' %></li>
 						<li><%= link_to image_tag('links.png'),
 						 								page_url(:action => 'show', 
 																		 :title => 'links'),
-													  :class => 'nav2' %></li>
+													  :id => 'links' %></li>
 						<li><%= link_to image_tag('portfolio.png'),
 						                asset_url(:action => 'show',
 						                				  :title => 'portfolio'),
-						                :class => 'nav2' %></li>
+						                :id => 'portfolio' %></li>
 						<li><%= link_to image_tag('offerings.png'),
 														asset_url(:action => 'show',
 																			:title => 'offerings') %></li>
 						<% if logged_in? %>
 						<li><%= link_to image_tag('logout.png'),
 														account_url(:action => 'logout'),
-																				:id => 'logout' %></li>
+														:id => 'logout' %></li>
 						<% end %>
 				</ul>
 			</div>
 			<div id="inner_content">
-				<p style="color: green"><%= flash[:notice] %></p>
+				<p id="flash" style="color: green"><%= flash[:notice] %></p>
 				<%= @content_for_layout %>
 			</div>
     </div>

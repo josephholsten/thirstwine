@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.page 'pages/:action/:title', :controller => 'pages'
   map.asset 'asset/:action/:title', :controller => 'asset'
+  map.reset_pass 'account/reset_password/:id', :controller => 'account', :action => 'reset_password'
   map.account 'account/:action', :controller => 'account'
 
   # Allow downloading Web Service WSDL as a file with an extension

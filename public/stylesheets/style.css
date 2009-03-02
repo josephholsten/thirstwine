@@ -114,15 +114,14 @@ h2 {
   height: 24px;
   margin: 0px -2px 0px -2px;
   padding: 5px 5px 0px 5px;
-/*  border-left: 1px solid #969696;*/
-/*  border-right: 1px solid #969696;*/
 }
 
-.nav1 {
+
+#home {
   top: -1px;
 }
 
-.nav2 {
+#portfolio, #links, #about {
   top: -2px;
 }
 
@@ -136,20 +135,10 @@ h2 {
   color: #969696;
 }
 
-/* iWeb Styles */
-.graphic_generic_title_textbox_style_default {
-    background: transparent;
-    float: none;
-    margin: 0px;
-    opacity: 1.00;
-}
-
-.graphic_shape_layout_style_default {
-    padding: 4px;
-}
-
 a {
-    color: #ffffff;
+/*    color: #ffffff;*/
+/*    color: #969696;*/
+    color: #ddd;
     text-decoration: underline;
 }
 
@@ -172,10 +161,61 @@ ol {
     text-indent: 0;
 }
 
-.Bullet {    border: none;
+.Bullet {
+    border: none;
     text-decoration: none;
 }
 
 img {
     border: none;
+}
+
+.col1 ul, .col2 ul, .col3 ul {
+  list-style-image: none;
+  list-style-position: inside;
+  list-style-type: none;
+  padding: 14px;
+}
+
+.col1 ul li, .col2 ul li, .col3 ul li {
+ font-family: "Times New Roman", "Times", serif; 
+ font-size: 95%;
+ line-height: 180%;
+}
+
+.col1 {
+  position: relative;
+  margin-left: 64px;
+  margin-top: 251px;
+  width: 212px;
+}
+.col2 {
+  position: absolute;
+  left: 467px;
+  top: 253px;
+  width: 183px;
+}
+
+.col3 {
+  position: absolute;
+  left: 257px;
+  top: 252px;
+  width: 200px;
+}
+
+#col1border, #col2border, #col3border {
+/*  position: absolute;*/
+/*  position: static;*/
+/*  position: relative;*/
+/*  position: fixed;*/
+  top: 270px;
+}
+#col1border {
+  left: 75px;
+}
+#col2border {
+  left: 445px;
+}
+#col3border {
+  left: 638px;
 }
