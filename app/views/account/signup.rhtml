@@ -1,0 +1,28 @@
+<div id="register_form">
+	
+<h2><%= image_tag 'create_account.png', :alt => 'Create an Account'%></h2>
+
+<% form_for :user do |user_form| %>
+<%= error_messages_for :user %>
+
+<p><label for="name"><%= image_tag 'name.png'%></label><br/>
+<%= user_form.text_field :name %></p>
+
+<p><label for="company"><%= image_tag 'company.png' %></label><br/>
+<%= user_form.text_field :company %></p>
+
+<p><label for="able_license"><%= image_tag 'able_license.png', :alt => 'Able License #'%></label><br/>
+<%= user_form.text_field :able_license %></p>
+
+<p><label for="email"><%= image_tag 'email.png'%></label><br/>
+<%= user_form.text_field :email %></p>
+
+<p><label for="password"><%= image_tag 'password.png'%></label><br/>
+<%= user_form.password_field :password %></p>
+
+<p><label for="password_confirmation"><%= image_tag 'repeat_password.png', :alt => 'Repeat Password'%></label><br/>
+<%= user_form.password_field :password_confirmation %></p>
+
+<%= image_submit_tag 'create.png' %>
+<% end %>
+</div>

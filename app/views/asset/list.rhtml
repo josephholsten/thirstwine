@@ -1,0 +1,23 @@
+<h1>Listing assets</h1>
+
+<table>
+  <tr>
+		<th>Name</th>
+  </tr>
+  
+<% for asset in @assets %>
+  <tr>
+    <td><%=h asset.name %></td>
+    <td><%= link_to 'Show', :action => 'show', :id => asset %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => asset %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => asset }, :confirm => 'Are you sure?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @asset_pages.current.previous } if @asset_pages.current.previous %>
+<%= link_to 'Next page', { :page => @asset_pages.current.next } if @asset_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New asset', :action => 'new' %>

@@ -1,0 +1,23 @@
+<% form_tag do%>
+	<%= hidden_field_tag 'anonymous', true %>
+	<%= image_submit_tag 'view_portfolio_unauthorized.png', :class => 'login_image'%>
+<% end -%>
+
+<div id="login_form">
+	<% form_tag do -%>
+	<p><label for="email"><%= image_tag "email.png" %></label><br/>
+	<%= text_field_tag 'email' %></p>
+
+	<p><label for="password"><%= image_tag "password.png" %></label><br/>
+	<%= password_field_tag 'password' %></p>
+
+	<!-- Uncomment this if you want this functionality
+	<p><label for="remember_me">Remember me:</label>
+	<%= check_box_tag 'remember_me' %></p>
+	-->
+
+	<p><%= image_submit_tag 'log_in.png' %></p>
+	<% end -%>
+</div>
+
+<%= link_to image_tag('register', :class => 'login_image'), :action => 'signup' %>

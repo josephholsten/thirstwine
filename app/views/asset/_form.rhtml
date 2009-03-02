@@ -1,0 +1,13 @@
+<%= error_messages_for 'asset' %>
+
+<!--[form:asset]-->
+<p><label for="asset_name">Name</label><br/>
+	<!-- <%= text_field 'asset', 'name' %>    -->
+	<%= select_tag 'asset[name]', ' <option>portfolio</option><option>anonymous portfolio</option><option>offerings</option>' %>                                                                                                                                                       </p>
+                                                                                                                     
+
+
+<p><label for="asset_file">File</label><br/>
+<input type="file" name="asset[file]" id="asset_file" />
+</p>
+<!--[eoform:asset]-->
